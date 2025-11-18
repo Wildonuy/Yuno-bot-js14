@@ -1,6 +1,9 @@
-# Level Bot
+# Level Bot (LevelBot)
 
 A Discord bot focused on XP and leveling features. Users gain XP from sending messages and unlock roles as they level up!
+
+**Bot Name:** LevelBot
+**Avatar Setup:** See [AVATAR_SETUP.md](AVATAR_SETUP.md) for instructions on setting the bot's profile picture
 
 ## Features
 
@@ -72,7 +75,12 @@ npm install
 }
 ```
 
-4. Run the bot:
+4. (Optional) Set the bot avatar:
+   - Place the file `00000-3035359988.png` in the root directory
+   - See [AVATAR_SETUP.md](AVATAR_SETUP.md) for details
+   - The bot will automatically set its name to "LevelBot" and use the avatar image
+
+5. Run the bot:
 ```bash
 npm start
 ```
@@ -175,6 +183,7 @@ src/
 │   └── sync-levelroles.js        # Sync roles for a level
 ├── modules/
 │   ├── auto-role-restore.js  # Restore roles on rejoin
+│   ├── bot-identity.js       # Set bot name and avatar
 │   ├── reaction-xp.js        # Reaction bonus XP system
 │   ├── command-executor.js   # Command routing
 │   └── message-processors.js # Message handling
