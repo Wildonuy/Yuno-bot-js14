@@ -14,7 +14,7 @@
 */
 
 // Consoling (to be sure that the right file is being executed: debug)
-console.log("Starting Yuno-Gasai-2");
+console.log("Starting Level-Bot - XP & Leveling System");
 
 
 if(process.env.NODE_ENV !== 'production') {

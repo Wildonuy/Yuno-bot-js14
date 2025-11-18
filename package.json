@@ -1,7 +1,7 @@
 {
-  "name": "yuno-gasai-2",
-  "version": "2.1.0",
-  "description": "The remade of Yuno Gasai, flawless & bugless",
+  "name": "level-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot focused on XP and leveling features - users gain XP from messages and unlock roles as they level up",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
