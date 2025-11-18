@@ -29,7 +29,7 @@ const Util = require("util"),
     fs = require("fs"),
     path = require("path"),
     EventEmitter = require("events"),
-    {Client, GatewayIntentBits} = require("discord.js");
+    {Client, GatewayIntentBits, Partials} = require("discord.js");
 
 let ModuleExporter = (require("./ModuleExporter.js")).init(),
     InteractiveTerminal = null,
@@ -85,7 +85,13 @@ let Yuno = function() {
             GatewayIntentBits.GuildMessages,
             GatewayIntentBits.MessageContent,
             GatewayIntentBits.DirectMessages,
-            GatewayIntentBits.GuildBans
+            GatewayIntentBits.GuildBans,
+            GatewayIntentBits.GuildMessageReactions
+        ],
+        partials: [
+            Partials.Message,
+            Partials.Reaction,
+            Partials.User
         ]
     });
     this.dC = this.discordClient;

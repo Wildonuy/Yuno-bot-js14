@@ -6,6 +6,7 @@ A Discord bot focused on XP and leveling features. Users gain XP from sending me
 
 ### Core Leveling System
 - **Automatic XP Gain**: Users earn XP by sending messages in your server
+- **Reaction Bonus XP**: Users earn bonus XP when others react to their messages (5x message XP)
 - **Level Progression**: XP formula: `5 * level² + 50 * level + 100`
 - **Role Rewards**: Assign roles automatically when users reach specific levels
 - **Persistent Data**: SQLite database stores all XP and level data
@@ -95,6 +96,7 @@ The bot requires the following Discord Gateway Intents:
 - `GUILD_MESSAGES`
 - `GUILD_MEMBERS`
 - `MESSAGE_CONTENT`
+- `GUILD_MESSAGE_REACTIONS` (for reaction bonus XP)
 
 ### Setting Up Level Roles
 
@@ -127,9 +129,17 @@ Example progression:
 - Level 10 → 11: 1,100 XP
 
 ### Gaining XP
-- Users gain XP by sending messages in channels where the bot can see them
-- XP is awarded per message (with cooldown to prevent spam)
+
+**From Messages:**
+- Users gain 5 XP per message sent in channels where the bot can see them
 - Only applies in servers where XP counting is enabled
+
+**From Reactions (Bonus XP):**
+- When someone reacts to your message, you earn 25 XP (equivalent to 5 messages)
+- You don't earn XP from reacting to your own messages
+- Bots don't earn reaction XP
+- Works on both new and old messages
+- Great way to reward quality content and engagement!
 
 ### Level Roles
 - When a user reaches a level, they receive ALL roles for that level and below
@@ -165,10 +175,11 @@ src/
 │   └── sync-levelroles.js        # Sync roles for a level
 ├── modules/
 │   ├── auto-role-restore.js  # Restore roles on rejoin
+│   ├── reaction-xp.js        # Reaction bonus XP system
 │   ├── command-executor.js   # Command routing
 │   └── message-processors.js # Message handling
 ├── message-processors/
-│   └── experience.js         # XP gain logic
+│   └── experience.js         # Message XP gain logic
 ├── lib/
 │   └── commandManager.js     # Command management
 ├── database.js        # SQLite wrapper
